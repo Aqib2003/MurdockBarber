@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Murdock-Barber-Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css2/all.css">
+
+
+</head>
+
+<body>
+    <div class="container-fluid sticky-top    p-0" id="nav1">
+        <nav class="navbar navbar-expand-lg text-light bg-black fixed-top ">
+    
+            <div class="container-fluid ">
+                <div class="container-fluid-o  me-0 ms-0">
+                    <a class="navbar-brand p-0" href="#">
+                        <img src="image/logo-alt.png" alt="logo" width="20%" height="40%">
+                    </a>
+                </div>
+                <button class="navbar-toggler px-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon p-0 " id="icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav me-5 ">
+                        <a class="nav-link me-4   " aria-current="page" href="index.html"><div class="animated-border">Home</div></a>
+                        <a class="nav-link me-4 " href="Services.html"><div class="animated-border">Services</div></a>
+                        <a class="nav-link me-4 " href="gallery.html"><div class="animated-border">Gallery</div></a>
+                        <a class="nav-link me-4 " href="contact.html"><div class="animated-border">Contact</div></a>
+                        <a class="nav-link me-4 " href="appointment.html"><div class="animated-border">Appointment</div></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container mt-5 text-light">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2 class="text-center mb-4">Book an Appointment</h2>
+                    <form id="appointmentForm" action="/submit_appointment" method="POST">
+                        <div class="row mb-3">
+                            <div class="col-sm-6">
+                                <label for="client_name" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="client_name" name="client_name" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-6">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="appointment_date" class="form-label">Preferred Date</label>
+                                <input type="date" class="form-control" id="appointment_date" name="appointment_date" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-12">
+                                <label for="appointment_time" class="form-label">Preferred Time</label>
+                                <input type="time" class="form-control" id="appointment_time" name="appointment_time" required>
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="services" class="form-label"><br>Select Services (hold Ctrl/Cmd to select multiple)</label>
+                                <select class="form-select" id="services" name="services[]" multiple required>
+                                    <option value="haircut">Haircut</option>
+                                    <option value="shave">Shave</option>
+                                    <option value="beard_trim">Beard Trim</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="additional_info" class="form-label">Additional Information</label>
+                            <textarea class="form-control" id="additional_info" name="additional_info" rows="4"></textarea>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">Request Appointment</button>
+                        </div>
+                    </form>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Success Popup -->
+        <div id="successPopup" class="popup">
+            <p class="text-center"><i class="fa-solid fa-circle-check"></i> Successfully submitted!<br>The Team Will Share Details Of your Appointment On your Contact Number</p>
+        </div>
+    
+        <!-- jQuery and Bootstrap JS (assuming you use Bootstrap's JavaScript components) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+        <!-- Custom JavaScript for showing success popup -->
+        <script>
+            $(document).ready(function() {
+                $('#appointmentForm').submit(function(event) {
+                    event.preventDefault(); // Prevent default form submission
+                    showSuccessPopup(); // Call function to show success popup
+                    // You can also add AJAX code here to submit the form data asynchronously
+                });
+            });
+    
+            function showSuccessPopup() {
+                $('#successPopup').fadeIn(); // Show the popup
+                setTimeout(function() {
+                    $('#successPopup').fadeOut(); // Hide the popup after 3 seconds
+                }, 3000);
+            }
+        </script>
+        
+        <div class="container-fluid px-0 bg-dark text-light m-0 im8">
+            <footer class="pt-5">
+                <div class="row m-5 ">
+                    <div class="col-lg-3 col-md-6 c9c mb-5">
+                        <ul class="nav flex-column">
+                            <img src="image/footer-logo.png" class="w-50" alt="50% width image" />
+                            <br />
+                            <p>Murdock is a legendary and cool Barber shop funded in 1979.</p>
+                    </div>
+                    <div class=" col-lg-3 col-md-6 c10  mb-5">
+                        <h5 style="color:tan;" class="mb-3">Browse</h5>
+                        <ul class="nav" id="nav3">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">_ Home</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 t">_ Team</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">_ About</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0  ">_ Services</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">_ Gallery</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">_ Contact</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">_ Blog</a></li>
+                        </ul>
+                    </div>
+    
+                    <div class=" col-lg-3 col-md-6 c11 mb-5">
+    
+                        <div class="row mb-1">
+                            <div class="col-1">
+                                <icon><i class="fa-solid fa-envelope fa-lg" style="color:tan;"></i></icon>
+                            </div>
+                            <div class="col-11">
+                                <h6><a href="mailto:hello@barbershop.com?&subject=Query">info@barbershop.com</a></h6>
+                            </div>
+                        </div>
+                        <div class="row mb-1">
+                            <div class="col-1">
+                                <icon><i class="fa-solid fa-mobile fa-lg" style="color:tan;"></i></icon>
+                            </div>
+                            <div class="col-11">
+                                <h6>1.800.321.9876</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-1">
+                                <icon><i class="fa-solid fa-location-dot fa-lg" style="color:tan;"></i></icon>
+                            </div>
+                            <div class="col-11">
+                                <h6>New York<br />
+                                    425 2nd St, Suite 100,<br />
+                                    NY 94107</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5  c12">
+                        <form>
+                            <h5 style="color:tan;" class="mb-3">Stay in touch</h5>
+                            <p>Sign up to our newsletter and stay up to date</p>
+                            <div class="d-flex flex-column flex-sm-row w-100">
+                                <input id="newsletter1" type="email" class="form-control" placeholder="Email">
+                                <button class="btn btn-primary" style="background-color:rgb(0, 0, 0); color:tan; border:0px solid;" type="button">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class=" f1 px-3 d-flex flex-column flex-sm-row justify-content-between pt-4 pb-1  border-top">
+                    <p>copyright 2017 Jellythemes. all rights reserved.</p>
+                    <ul class="list-unstyled d-flex">
+                      <li class="ms-3"><a class="animated-border" href="#">Terms Of Use</a></li>
+                      <li class="ms-3"><a class="animated-border" href="#">Privacy Policy</a></li>
+                      <li class="ms-3"><a class="animated-border" href="#">Contact Us</a></li>
+                    </ul>
+                  </div>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+                    crossorigin="anonymous"></script>
+                
+                    
+    </body>
+    
+    </html>
